@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const PORT =  4000;
 const mongoose = require("mongoose");
+const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -16,11 +17,15 @@ mongoose.connect(
 
 // import route
 const listingRouters = require("./routes/listing");
+const userRouters = require ("./routes/user")
 
+//Middleware
+app.use(express.json());
+app.use(cors());
 
 //Route Middleware
-app.use(express.json());
 app.use("/api/crud", listingRouters);
+app.use("/api/user", userRouters);
 
 
 app.listen(PORT, () => {
