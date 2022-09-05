@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 //Route Middleware
-app.use("/api/crud", listingRouters);
+app.use("/api/listing", listingRouters);
 app.use("/api/user", userRouters);
 
 

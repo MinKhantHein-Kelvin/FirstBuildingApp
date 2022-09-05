@@ -1,0 +1,16 @@
+<div class="container py-3">
+  <div class="row" *ngIf="listings$ | async as listings">
+    <div class="col-md-4 mb-4" *ngFor="let listing of listings">
+      <div class="card bg-dark">
+      <div class="card-header text-center">
+        <h5>{{listing.title}}</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="card-title text-center">Price : {{listing.price}} | Locality : {{listing.locality}}</h6>
+        <a [routerLink]="listing._id" class="btn btn-block rounded-pill mt-4" style="background : olivedrab; color: wheat;">View Details</a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
