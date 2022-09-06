@@ -15,7 +15,7 @@ export class AllListingComponent implements OnInit {
 
   ngOnInit(): void {
     this.listings$ = this.listingService.getListings();
-    console.log(this.listings$);
+    // console.log(this.listings$);
 
   }
 

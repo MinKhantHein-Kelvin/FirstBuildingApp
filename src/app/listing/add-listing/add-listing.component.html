@@ -1,0 +1,58 @@
+<div class="container my-4">
+  <h1 class = "page-header" style="font-weight: 500;">Add Listing</h1><hr>
+  <form class="form" [formGroup]="listingForm" (ngSubmit)="newListing()">
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Title</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="inlineFormInputGroup"
+        formControlName="title"
+      />
+    </div>
+
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Price</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="inlineFormInputGroup"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Locality</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="inlineFormInputGroup"
+        formControlName="locality"
+      />
+    </div>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Details</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="inlineFormInputGroup"
+        formControlName="details"
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary btn-block mt-3 rounded-pill"
+      [disabled]="!listingForm.valid"
+    >
+      Add Listing
+    </button>
+  </form>
+</div>
