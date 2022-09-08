@@ -1,8 +1,72 @@
-<div class="jumbotron w-50 text-center" style="margin: 40px auto;">
+<div class="jumbotron w-50 text-center" *ngIf="listing" style="margin: 20px auto;">
   <h1 class="display-1 font-weight-normal text-uppercase">{{listing.title}}</h1>
-  <hr class="my-4">
+  <hr class="my-3">
   <h4>Price : {{listing.price}} | Locality : {{listing.locality}}</h4>
   <h5>Details : {{listing.details}}</h5>
-  <button class="mt-3 btn-info">Register</button>
-  <button class="ml-4 mt-3 btn-danger">Login</button>
+  <button class="mt-3 btn-info" (click)="showEdit()">Edit</button>
+  <button class="ml-4 mt-3 btn-danger" (click)="removeListing()">Delete</button>
+</div>
+
+
+<div class="container" *ngIf="showForm">
+  <h1 class = "page-header" style="font-weight: 500;">Edit Listing</h1><hr>
+  <form class="form" [formGroup]="editListingForm" (ngSubmit)="editListing()">
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Title</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="listing.title"
+        id="inlineFormInputGroup"
+        formControlName="title"
+      />
+    </div>
+
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Price</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="listing.price"
+        id="inlineFormInputGroup"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Locality</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="listing.locality"
+        id="inlineFormInputGroup"
+        formControlName="locality"
+      />
+    </div>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Details</div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="listing.details"
+        id="inlineFormInputGroup"
+        formControlName="details"
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary btn-block mt-3 rounded-pill"
+      [disabled]="!editListingForm.valid"
+    >
+      Edit Listing
+    </button>
+  </form>
 </div>
