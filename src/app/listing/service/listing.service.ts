@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class ListingService {
   public base_Url = 'http://localhost:4000/api/listing';
-  // data : any = JSON.parse(localStorage.getItem('token' : token));
 
   private httpOptions = {
       headers : new HttpHeaders().set('Content-Type','application/json').set('auth-token',localStorage.getItem('token')!)

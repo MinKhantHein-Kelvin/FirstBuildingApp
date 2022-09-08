@@ -4,6 +4,7 @@ import { Listing } from './../model/listing';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/user/service/user.service';
 
 @Component({
   selector: 'app-listing-detail',
@@ -26,7 +27,7 @@ export class ListingDetailComponent implements OnInit {
     details : new FormControl("", [Validators.required]),
   })
 
-  constructor(private listingService : ListingService, private route : ActivatedRoute, private router : Router) { }
+  constructor(private listingService : ListingService, private route : ActivatedRoute, private router : Router, public userService : UserService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");

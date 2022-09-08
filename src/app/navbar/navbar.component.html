@@ -7,20 +7,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-4">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/listings">All Listing</a>
+        <a class="nav-link" routerLink="/listings"  style="cursor: pointer;">All Listing</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="listings/add-listing">Add-Listing</a>
+      <li class="nav-item" *ngIf="userService.loggedIn()">
+        <a class="nav-link" routerLink="listings/add-listing"  style="cursor: pointer;">Add-Listing</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink = "user/login">Login</a>
+      <li class="nav-item" *ngIf="!userService.loggedIn()">
+        <a class="nav-link" routerLink = "user/login"  style="cursor: pointer;">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink = "user/register">Register</a>
+      <li class="nav-item" *ngIf="!userService.loggedIn()">
+        <a class="nav-link" routerLink = "user/register"  style="cursor: pointer;">Register</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" style="cursor: pointer;">Logout</a>
-      </li> -->
+      <li class="nav-item" *ngIf="userService.loggedIn()">
+        <a class="nav-link" (click)="userService.logOut()" style="cursor: pointer;">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
