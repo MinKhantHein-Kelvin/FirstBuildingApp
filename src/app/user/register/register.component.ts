@@ -9,6 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  public error = false;
+  message: any;
+  messageClass: any;
+
+
   registerForm = new FormGroup({
     name : new FormControl("", Validators.compose([Validators.required, Validators.maxLength(25)])),
     email : new FormControl("", Validators.compose([Validators.required, Validators.email])),
@@ -53,9 +59,17 @@ export class RegisterComponent implements OnInit {
   userRegister(){
     if(this.registerForm.valid){
       this.userService.Register(this.registerForm.value).subscribe(data=>{
-          // console.log(data)
-          this.registerForm.reset();
-          this.router.navigate(['user/login']);
+          if(!data.success){
+            this.error = true;
+            this.messageClass = 'alert-warning';
+            this.message = data.message;
+          }
+          else{
+            this.error = false;
+            this.registerForm.reset();
+            this.router.navigate(['user/login']);
+          }
+
       })
     }
 

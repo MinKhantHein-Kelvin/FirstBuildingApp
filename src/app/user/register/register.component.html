@@ -1,6 +1,13 @@
 <div class="container my-4">
   <h1 class="page-header" style="font-weight: 500;">Register</h1><hr>
   <form class="form" [formGroup]="registerForm" (ngSubmit)="userRegister()">
+
+    <div class="form-group">
+      <div [ngClass]="messageClass" *ngIf="error">
+        {{message}}
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="name">Username</label>
       <input type="name" class="form-control" id="name" placeholder="*Username" formControlName = "name" required/>

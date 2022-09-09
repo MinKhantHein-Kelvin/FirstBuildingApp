@@ -10,7 +10,6 @@ router.post("/register",async (req,res)=>{
    const emailExist = await User.findOne({
       email : req.body.email
    });
-   if(emailExist) return res.status(400).send("Email Already Exist");
 
   //Hash Password
   const salt = bcrypt.genSaltSync(10);
@@ -23,28 +22,32 @@ router.post("/register",async (req,res)=>{
     password : hashPassword
   });
   try {
-    const saveUser =await userRegister.save();
-    res.json(saveUser);
+    if (emailExist) {
+      return res.json({success : false, message : "Email Already Exist!"})
+    }
+    await userRegister.save();
+    res.json({success : true , message : 'User Register Successful'});
   } catch (error) {
-    res.json({message : error});
+    res.json({success : false , message : "Couldn't save user!"})
   }
 });
 
-
-//User Login
+ //User Login
 router.post("/login",async (req,res)=>{
   //checking email in db
   const user = await User.findOne({email : req.body.email});
-  if(!user) return res.status(400).send("Email is wrond");
+  if(!user) return res.json({success : false , message:"Invalid Email!"});
 
   //Checking Password
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if(!validPassword) return res.status(400).send("Invalid Password");
+  if(!validPassword) return res.json({success : false, message : "Invalid Password!"});
 
   //create and assign a token
   const token = jwt.sign({_id : user._id}, process.env.Token_Secret);
-  res.header("auth-token", token).send({token : token});
+  res.header("auth-token", token).json({success : true ,token : token});
 
 })
 
 module.exports = router;
+
+
