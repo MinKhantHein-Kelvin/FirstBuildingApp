@@ -50,8 +50,10 @@ export class ListingDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     if(this.editListingForm.valid){
       this.listingService.editListing(this.editListingForm.value,this.id).subscribe(data=>{
-        this.editListingForm.reset();
-        this.router.navigate(['/listings'])
+        if(data){
+          this.editListingForm.reset();
+          this.router.navigate(['/listings']);
+        }
       })
     }
   }
@@ -61,7 +63,9 @@ export class ListingDetailComponent implements OnInit {
     this.listingService.deleteListing(this.id).subscribe(data=>
       {
         // console.log(data);
-        this.router.navigate(['/listings'])
+        if(data){
+          this.router.navigate(['/listings'])
+        }
       }
       )
   }
