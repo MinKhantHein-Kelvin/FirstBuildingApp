@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllListingComponent } from './listing/all-listing/all-listing.component';
 
 const routes: Routes = [
-  // {
-  //   path : "",
-  //   redirectTo:"listings",
-  //   pathMatch : "full"
-  // },
+  {
+    path : "",
+    redirectTo:"listings",
+    pathMatch : "full"
+  },
   {
       path: 'listings',
       loadChildren: () => import('./listing/listing.module').then(mod => mod.ListingModule),
@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then(mod => mod.UserModule),
   },
-  { path: '**', pathMatch: 'full', component: AllListingComponent },
+  // { path: '**', pathMatch: 'full', component: AllListingComponent },
 
 ];
 
