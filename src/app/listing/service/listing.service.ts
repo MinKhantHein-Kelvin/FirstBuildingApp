@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ListingService {
-  public base_Url = 'http://localhost:4000/api/listing';
+  public base_Url = 'https://listingapi.herokuapp.com/api/listing';
 
   private httpOptions = {
       headers : new HttpHeaders().set('Content-Type','application/json').set('auth-token',localStorage.getItem('token')!)

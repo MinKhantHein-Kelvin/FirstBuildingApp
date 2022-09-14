@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  public base_Url = 'http://localhost:4000/api/user';
+  public base_Url = 'https://listingapi.herokuapp.com/api/user';
 
   constructor(private http$ : HttpClient, private router:Router) { }
 
