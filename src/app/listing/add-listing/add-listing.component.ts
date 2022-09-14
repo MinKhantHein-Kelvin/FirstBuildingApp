@@ -25,10 +25,8 @@ export class AddListingComponent implements OnInit {
   newListing(){
     if(this.listingForm.valid){
       this.ListingService.addListing(this.listingForm.value).subscribe(data=>{
-        if(data){
-          this.listingForm.reset();
+        this.listingForm.reset();
         this.router.navigate(['/listings']);
-        }
       })
     }
   }

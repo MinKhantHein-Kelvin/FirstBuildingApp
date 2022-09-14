@@ -32,9 +32,7 @@ export class ListingDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");
     this.listingSub$ = this.listingService.getListing(this.id).subscribe(data=>{
-      if(data){
-        this.listing = data;
-      }
+      this.listing = data;
     });
   }
 
