@@ -5,7 +5,7 @@
       <input  class="no-outline text-warning" placeholder="Search item of title" formControlName="obj">
     </div> -->
     <div class="form-group mb-3 ml-auto" style="display: flex;">
-      <p class="mt-2 mr-1 text-danger font-weight-bold text-primary">Search:</p>
+      <p class="mt-3 mr-1 text-danger font-weight-bold text-primary">Search:</p>
       <input
         class="no-outline ml-2"
         formControlName="obj"
@@ -25,7 +25,7 @@
       </div>
       <div class="card-body">
         <h4 class="card-title text-center">Price : {{listing.price}} | Locality : {{listing.locality}}</h4>
-        <a [routerLink]="listing._id" class="btn btn-block rounded-pill mt-4" style="background : rgb(193, 71, 27); color: wheat;">View Details</a>
+        <a [routerLink]="listing._id" class="btn btn btn-secondary btn-block rounded-pill mt-4" style="color: wheat;">View Details</a>
       </div>
     </div>
     </div>
